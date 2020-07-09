@@ -13,7 +13,6 @@ class NiagahosterServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('App\Services\Package\Contract', 'App\Services\Package\Service');
     }
 
     /**
