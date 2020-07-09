@@ -174,7 +174,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-		App\Providers\NiagahosterServiceProvider::class,
+		App\Providers\SiwServiceProvider::class,
 
     ],
 

@@ -37,4 +37,9 @@ class Admin extends Authenticatable
      */
     protected $casts = [
     ];
+
+    public function role()
+	{
+		return $this->hasOne('App\Role', 'id', 'role_id');
+	}
 }

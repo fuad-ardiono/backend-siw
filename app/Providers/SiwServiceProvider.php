@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class NiagahosterServiceProvider extends ServiceProvider
+class SiwServiceProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -13,6 +13,7 @@ class NiagahosterServiceProvider extends ServiceProvider
      */
     public function register()
     {
+    	$this->app->singleton('App\Services\Auth\Contract', 'App\Services\Auth\Service');
     }
 
     /**
