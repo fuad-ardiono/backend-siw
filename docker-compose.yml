@@ -3,35 +3,35 @@ services:
   app:
     build:
       args:
-        user: niagahoster
+        user: backendsiw
         uid: 1000
       context: ./
       dockerfile: Dockerfile
-    image: niagahoster
-    container_name: niagahoster-app
+    image: backendsiw
+    container_name: backendsiw-app
     restart: unless-stopped
     working_dir: /var/www/
     volumes:
       - ./:/var/www:delegated
     networks:
-      - niagahoster
+      - backendsiw
   mysql:
     image: mysql:5.7
-    container_name: niagahoster-db
+    container_name: backendsiw-db
     restart: unless-stopped
     ports:
       - "3308:3306"
     environment:
-      MYSQL_DATABASE: niagahoster-backend
+      MYSQL_DATABASE: backendsiw
       MYSQL_ROOT_PASSWORD: root
       MYSQL_PASSWORD: root
       MYSQL_USER: root
       SERVICE_TAGS: dev
     networks:
-      - niagahoster
+      - backendsiw
   nginx:
     image: nginx:1.17-alpine
-    container_name: niagahoster-nginx
+    container_name: backendsiw-nginx
     restart: unless-stopped
     ports:
       - 3000:80
@@ -39,7 +39,7 @@ services:
       - ./:/var/www:delegated
       - ./docker-compose/nginx:/etc/nginx/conf.d
     networks:
-      - niagahoster
+      - backendsiw
 networks:
-  niagahoster:
+  backendsiw:
     driver: bridge
