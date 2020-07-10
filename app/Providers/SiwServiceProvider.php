@@ -14,7 +14,12 @@ class SiwServiceProvider extends ServiceProvider
     public function register()
     {
     	$this->app->singleton('App\Services\Auth\Contract', 'App\Services\Auth\Service');
-    }
+		$this->app->singleton(
+			'App\Services\CriticsSuggestion\Contract',
+			'App\Services\CriticsSuggestion\Service'
+		);
+
+	}
 
     /**
      * Bootstrap services.
