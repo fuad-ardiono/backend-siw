@@ -15,15 +15,4 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-Route::group(['prefix' => 'auth'], function() {
-	Route::post('signin', 'Api\AuthController@signin');
-
-	Route::group(['middleware' => 'auth'], function () {
-		Route::get('profile', 'Api\AuthController@getProfile');
-		Route::post('signout', 'Api\AuthController@signout');
-	});
-});
+include 'module/api/AuthRoutes.php';
