@@ -63,13 +63,15 @@ class Service implements Contract {
 
 	public function signout($data)
 	{
-		if(@$data['admin_logout'] === true) {
+		$admin = Auth::guard('admin')->user();
+		if(@$data['admin_logout'] === true && $admin) {
 			Auth::guard('admin')->logout();
 
 			return true;
 		}
 
-		if(@$data['resident_logout'] === true) {
+		$resident = Auth::guard('resident')->user();
+		if(@$data['resident_logout'] === true && $resident) {
 			Auth::guard('resident')->logout();
 
 			return true;
