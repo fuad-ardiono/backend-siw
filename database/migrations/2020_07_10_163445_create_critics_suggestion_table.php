@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCirticsSuggestionTable extends Migration
+class CreateCriticsSuggestionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCirticsSuggestionTable extends Migration
      */
     public function up()
     {
-        Schema::create('cirtics_suggestion', function (Blueprint $table) {
+        Schema::create('critics_suggestion', function (Blueprint $table) {
             $table->id();
             $table->string('subject');
             $table->text('body');
@@ -29,6 +29,6 @@ class CreateCirticsSuggestionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cirtics_suggestion');
+        Schema::dropIfExists('critics_suggestion');
     }
 }
