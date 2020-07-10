@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Faker\Generator as Faker;
-use Illuminate\Support\Facades\Hash;
 
 class HeadFamilyTableSeeder extends Seeder
 {

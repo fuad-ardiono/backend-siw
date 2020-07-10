@@ -21,6 +21,7 @@ class AdminsTableSeeder extends Seeder
         if(!$admin) {
 			Admin::insert([
 				'username' => 'admin',
+				'name' => 'Admin',
 				'password' => Hash::make('admin'),
 				'role_id' => 1,
 				'created_at' => $now,
