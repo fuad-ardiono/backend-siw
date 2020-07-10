@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(CriticsSuggestion::class, function (Faker $faker) {
     return [
-        'subject' => $faker->title,
+        'subject' => $faker->text(50),
 		'body' => $faker->text()
     ];
 });

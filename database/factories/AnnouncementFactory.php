@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Announcement::class, function (Faker $faker) {
     return [
-        'title' => $faker->title,
+        'title' => $faker->text(50),
 		'body' => $faker->text()
     ];
 });
