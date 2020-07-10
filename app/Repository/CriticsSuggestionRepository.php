@@ -13,6 +13,6 @@ class CriticsSuggestionRepository {
 
 	public function create($data)
 	{
-		return $this->critics_suggestion_model->newQuery()->insert($data);
+		return $this->critics_suggestion_model->newQuery()->create($data);
 	}
 }
