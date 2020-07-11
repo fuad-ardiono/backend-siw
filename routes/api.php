@@ -12,4 +12,5 @@
 */
 
 include 'module/api/AuthRoutes.php';
-include "module/api/CriticsSuggestionRoutes.php";
+include 'module/api/CriticsSuggestionRoutes.php';
+include 'module/api/ComplaintRoutes.php';

@@ -1,5 +1,6 @@
 <?php
 namespace App\Services\Auth;
+
 use App\Admin;
 use App\Repository\AdminRepository;
 use App\Repository\ResidentRepository;
