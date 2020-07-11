@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Services\CriticsSuggestion\Contract as CriticsSuggestionContract;
 
-class CirticsSuggestionController extends Controller
+class CriticsSuggestionController extends Controller
 {
 	private $critics_suggestion_service;
 
@@ -33,6 +33,32 @@ class CirticsSuggestionController extends Controller
 			$dispatch_service = $this->critics_suggestion_service->store($input);
 
 			return $this->response('Success send critics suggestion', $dispatch_service, 201);
+		} catch (\Exception $err) {
+			return $this->responseError($err);
+		}
+	}
+
+	public function index(Request $request)
+	{
+		try {
+			$query['perPage'] = $request->query('perPage', 5);
+			$query['page'] = $request->query('page', 1);
+			$query['isRead'] = $request->query('isRead', false);
+
+			$dispatch_service = $this->critics_suggestion_service->index($query);
+
+			return $this->response('Success get data critics suggestion', $dispatch_service);
+		} catch (\Exception $err) {
+			return $this->responseError($err);
+		}
+	}
+
+	public function markIsRead($id)
+	{
+		try {
+			$dispatch_service = $this->critics_suggestion_service->markIsRead($id);
+
+			return $this->response('Success mark is read', $dispatch_service);
 		} catch (\Exception $err) {
 			return $this->responseError($err);
 		}

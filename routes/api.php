@@ -1,9 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,7 +13,3 @@ use Illuminate\Support\Facades\Auth;
 
 include 'module/api/AuthRoutes.php';
 include "module/api/CriticsSuggestionRoutes.php";
-
-Route::group(['middleware' => 'acl:admin'], function () {
-
-});

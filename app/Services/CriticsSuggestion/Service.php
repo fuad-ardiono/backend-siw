@@ -19,4 +19,14 @@ class Service implements Contract {
 
 		return $this->critics_suggestion_repo->create($data);
 	}
+
+	public function index($data)
+	{
+		return $this->critics_suggestion_repo->index($data);
+	}
+
+	public function markIsRead($cs_id)
+	{
+		return $this->critics_suggestion_repo->markIsRead($cs_id);
+	}
 }
