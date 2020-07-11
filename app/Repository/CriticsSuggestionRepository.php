@@ -37,7 +37,7 @@ class CriticsSuggestionRepository {
 	{
 		$record = $this->critics_suggestion_model->newQuery();
 
-		if($data['isRead'] === true) {
+		if($data['isRead'] == true) {
 			$record->where('is_read', true);
 		} else {
 			$record->where('is_read', false);
