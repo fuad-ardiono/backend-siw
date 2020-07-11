@@ -43,6 +43,7 @@ class CriticsSuggestionRepository {
 			$record->where('is_read', false);
 		}
 
-		return $this->convertToMetaAndData($record->paginate($data['perPage'], '*', 'page', $data['page']));
+		return $this->convertToMetaAndData($record->with('resident')
+			->paginate($data['perPage'], '*', 'page', $data['page']));
 	}
 }
