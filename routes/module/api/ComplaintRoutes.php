@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 
-Route::group(['prefix' => 'complaint'], function () {
+Route::group(['prefix' => 'complaint', 'middleware' => 'jwt_guard'], function () {
 	Route::group(['middleware' => 'acl:resident'], function () {
 		Route::post('store', 'Api\ComplaintController@store');
 	});

@@ -17,11 +17,8 @@ class ACLMiddleware
      */
     public function handle($request, Closure $next, $acl)
     {
-    	$user = Auth::guard('admin')->check() ?
-			Auth::guard('admin')->user() : Auth::guard('resident')->user();
-
-    	if($user) {
-			$role = Role::query()->find($user->role_id);
+    	if($request['user']) {
+			$role = $request['user']['role'];
 
 			if($acl === $role->level) {
 				return $next($request);

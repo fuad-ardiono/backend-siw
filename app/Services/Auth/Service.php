@@ -5,6 +5,7 @@ use App\Admin;
 use App\Repository\AdminRepository;
 use App\Repository\ResidentRepository;
 use App\Resident;
+use Firebase\JWT\JWT;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,14 +27,9 @@ class Service implements Contract {
 				$is_password_match = Hash::check($data['password'], $user->password);
 
 				if($is_password_match) {
+					$user['token'] = JWT::encode($user, env('APP_KEY'));
 
-					if(!Auth::guard('admin')->check()) {
-						Auth::guard('admin')->attempt(['username' => $data['username'], 'password' => $data['password']]);
-
-						return $user;
-					}
-
-					throw new \Exception('You already signed in', 401);
+					return $user;
 				} else {
 					throw new \Exception('Username or password invalid', 401);
 				}
@@ -47,46 +43,13 @@ class Service implements Contract {
 			$is_password_match = Hash::check($data['password'], $user->password);
 
 			if($is_password_match) {
+				$user['token'] = JWT::encode($user, env('APP_KEY'));
 
-				if(!Auth::guard('resident')->check()) {
-					Auth::guard('resident')->attempt(['nik_id' => $data['nik'], 'password' => $data['password']]);
-
-					return $user;
-				}
-
-				throw new \Exception('You already signed in', 401);
+				return $user;
 			} else {
-				throw new \Exception('Username or password invalid', 401);
+				throw new \Exception('Nik or password invalid', 401);
 			}
 		}
 		throw new \Exception('Nik or password invalid', 401);
-	}
-
-	public function signout($data)
-	{
-		$admin = Auth::guard('admin')->user();
-		if(@$data['admin_logout'] === true && $admin) {
-			Auth::guard('admin')->logout();
-
-			return true;
-		}
-
-		$resident = Auth::guard('resident')->user();
-		if(@$data['resident_logout'] === true && $resident) {
-			Auth::guard('resident')->logout();
-
-			return true;
-		}
-
-		throw new \Exception('Invalid payload value', 403);
-	}
-
-	public function getProfile()
-	{
-		$admin = Auth::guard('admin')->user();
-
-		if($admin) {
-			return $this->admin_repo->findByUsername($admin['username']);
-		}
 	}
 }

@@ -53,25 +53,10 @@ class AuthController extends Controller
 		}
 	}
 
-	public function getProfile()
+	public function getProfile(Request $request)
 	{
 		try {
-			$dispatch_service = $this->auth_service->getProfile();
-
-			return $this->response('Get profile', $dispatch_service);
-		} catch (\Exception $err) {
-			return $this->responseError($err);
-		}
-	}
-
-	public function signout(Request $request)
-	{
-		try {
-			$input = $request->only(['admin_logout', 'resident_logout']);
-
-			$dispatch_service = $this->auth_service->signout($input);
-
-			return $this->response('Logout', $dispatch_service);
+			return $this->response('Get profile', $request['user']);
 		} catch (\Exception $err) {
 			return $this->responseError($err);
 		}
