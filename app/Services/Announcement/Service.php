@@ -13,9 +13,9 @@ class Service implements Contract {
 		$this->announcement_repo = new AnnouncementRepository($announcement);
 	}
 
-	public function store($data)
+	public function store($data, $id_user)
 	{
-		$data['admin_id'] = Auth::guard('admin')->user()->id;
+		$data['admin_id'] = $id_user;
 
 		return $this->announcement_repo->store($data);
 	}

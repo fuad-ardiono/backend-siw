@@ -30,7 +30,7 @@ class CriticsSuggestionController extends Controller
 				return $this->response('Please check your input', $validate->getMessageBag());
 			}
 
-			$dispatch_service = $this->critics_suggestion_service->store($input);
+			$dispatch_service = $this->critics_suggestion_service->store($input, $request['user']['id']);
 
 			return $this->response('Success send critics suggestion', $dispatch_service, 201);
 		} catch (\Exception $err) {

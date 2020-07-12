@@ -13,9 +13,9 @@ class Service implements Contract {
 		$this->critics_suggestion_repo = new CriticsSuggestionRepository($criticsSuggestion);
 	}
 
-	public function store($data)
+	public function store($data, $id_user)
 	{
-		$data['resident_id'] = Auth::guard('resident')->user()->id;
+		$data['resident_id'] = $id_user;
 
 		return $this->critics_suggestion_repo->create($data);
 	}

@@ -30,7 +30,7 @@ class ComplaintController extends Controller
 				return $this->response('Please check your input', $validate->getMessageBag());
 			}
 
-			$dispatch_service = $this->complaint_service->store($input);
+			$dispatch_service = $this->complaint_service->store($input, $request['user']['id']);
 
 			return $this->response('Success create complaint', $dispatch_service, 201);
 		} catch (\Exception $err) {

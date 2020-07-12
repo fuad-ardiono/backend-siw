@@ -30,7 +30,7 @@ class AnnouncementController extends Controller
 				return $this->response('Please check your input', $validate->getMessageBag());
 			}
 
-			$dispatch_service = $this->announcement_service->store($input);
+			$dispatch_service = $this->announcement_service->store($input, $request['user']['id']);
 
 			return $this->response('Success create announcement', $dispatch_service);
 		} catch (\Exception $err) {
