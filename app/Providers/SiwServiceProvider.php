@@ -20,6 +20,7 @@ class SiwServiceProvider extends ServiceProvider
 		);
 		$this->app->singleton('App\Services\Complaint\Contract', 'App\Services\Complaint\Service');
 		$this->app->singleton('App\Services\Announcement\Contract', 'App\Services\Announcement\Service');
+		$this->app->singleton('App\Services\HeadFamily\Contract', 'App\Services\HeadFamily\Service');
 	}
 
     /**

@@ -17,8 +17,6 @@ $factory->define(Resident::class, function (Faker $faker) {
 		'birth_place' => $faker->randomElement(['Jakarta', 'Yogyakarta', 'Balikpapan', 'Samarinda']),
 		'birth_date' => $faker->dateTimeBetween(),
 		'occupation' => $faker->randomElement(['PNS', 'Karyawan Swasta', 'Guru', 'TNI']),
-		'role_id' => 2,
-		'created_at' => $faker->dateTime(),
-		'updated_at' => $faker->dateTime(),
+		'role_id' => 2
     ];
 });

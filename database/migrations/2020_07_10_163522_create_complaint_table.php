@@ -18,7 +18,8 @@ class CreateComplaintTable extends Migration
             $table->enum('type', ['kematian', 'kehilangan', 'tamu']);
             $table->string('body');
             $table->boolean('is_resolved')->default(false);
-            $table->timestamps();
+			$table->timestamp('created_at')->useCurrent();
+			$table->timestamp('updated_at')->useCurrent();
         });
     }
 

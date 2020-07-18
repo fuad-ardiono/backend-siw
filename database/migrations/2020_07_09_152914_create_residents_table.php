@@ -24,7 +24,8 @@ class CreateResidentsTable extends Migration
 			$table->string('birth_place');
 			$table->date('birth_date');
 			$table->string('occupation');
-            $table->timestamps();
+			$table->timestamp('created_at')->useCurrent();
+			$table->timestamp('updated_at')->useCurrent();
         });
     }
 

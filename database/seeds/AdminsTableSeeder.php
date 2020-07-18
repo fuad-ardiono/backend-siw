@@ -23,9 +23,7 @@ class AdminsTableSeeder extends Seeder
 				'username' => 'admin',
 				'name' => 'Admin',
 				'password' => Hash::make('admin'),
-				'role_id' => 1,
-				'created_at' => $now,
-				'updated_at' => $now
+				'role_id' => 1
 			]);
 		}
     }

@@ -17,7 +17,8 @@ class CreateRolesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('level');
-            $table->timestamps();
+			$table->timestamp('created_at')->useCurrent();
+			$table->timestamp('updated_at')->useCurrent();
         });
     }
 

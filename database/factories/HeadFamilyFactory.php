@@ -14,8 +14,6 @@ $factory->define(HeadFamily::class, function (Faker $faker) {
 		'kelurahan' => $faker->randomElement(['Gn.Samarinda', 'Damai', 'Gn.Samarinda Baru']),
 		'kecamatan' => $faker->randomElement(['Balikpapan Utara', 'Balikpapan Tengah', 'Balikpapan Kota']),
 		'city' => 'Balikpapan',
-		'province' => 'Kalimantan Timur',
-		'created_at' => $faker->dateTime(),
-		'updated_at' => $faker->dateTime(),
+		'province' => 'Kalimantan Timur'
     ];
 });

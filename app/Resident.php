@@ -11,6 +11,20 @@ class Resident extends Authenticatable
 	use Notifiable;
     protected $table = 'residents';
 
+    protected $fillable = [
+		'nik_id',
+		'name',
+		'password',
+		'gender',
+		'religion',
+		'address',
+		'birth_place',
+		'birth_date',
+		'occupation',
+		'role_id',
+		'head_family_id'
+	];
+
     protected $hidden = [
     	'password'
 	];

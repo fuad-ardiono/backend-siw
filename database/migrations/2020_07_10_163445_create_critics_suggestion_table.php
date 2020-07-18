@@ -18,7 +18,8 @@ class CreateCriticsSuggestionTable extends Migration
             $table->string('subject');
             $table->text('body');
             $table->boolean('is_read')->default(false);
-            $table->timestamps();
+			$table->timestamp('created_at')->useCurrent();
+			$table->timestamp('updated_at')->useCurrent();
         });
     }
 
