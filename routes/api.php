@@ -16,3 +16,4 @@ include 'module/api/CriticsSuggestionRoutes.php';
 include 'module/api/ComplaintRoutes.php';
 include 'module/api/AnnouncementRoute.php';
 include 'module/api/HeadFamilyRoute.php';
+include 'module/api/StatisticRoutes.php';

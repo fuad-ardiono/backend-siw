@@ -63,4 +63,14 @@ class ResidentRepository {
 		return $this->convertToMetaAndData($record->with('head_family')
 			->paginate($data['perPage'], '*', 'page', $data['page']));
 	}
+
+	public function residentMaleCount()
+	{
+		return $this->resident_model->newQuery()->where('gender', 'L')->count();
+	}
+
+	public function residentFemaleCount()
+	{
+		return $this->resident_model->newQuery()->where('gender', 'F')->count();
+	}
 }

@@ -54,7 +54,7 @@ class Service implements Contract {
 			}, $data['resident']);
 			$this->resident_repo->syncResident($ids, $data['head_family']['id']);
 			$resident = $this->resident_repo->update($data['resident']);
-			
+
 			DB::commit();
 
 			return [
