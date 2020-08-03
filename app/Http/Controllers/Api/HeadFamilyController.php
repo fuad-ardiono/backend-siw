@@ -41,7 +41,7 @@ class HeadFamilyController extends Controller
 	public function update(Request $request)
 	{
 		try {
-			$input = $request->only(['head_resident', 'resident']);
+			$input = $request->only(['head_family', 'resident']);
 
 			$validate = Validator::make($input, [
 				'head_resident' => 'required|array',
