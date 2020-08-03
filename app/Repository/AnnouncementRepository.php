@@ -29,7 +29,7 @@ class AnnouncementRepository {
 			$record->where('is_active', false);
 		}
 
-		return $this->convertToMetaAndData($record->with('admin')
+		return $this->convertToMetaAndData($record->with('admin')->orderByDesc('created_at')
 			->paginate($data['perPage'], '*', 'page', $data['page']));
 	}
 

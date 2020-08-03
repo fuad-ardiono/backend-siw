@@ -28,7 +28,7 @@ class HeadFamilyRepository {
 	{
 		$record = $this->head_family_model->newQuery();
 
-		$pagination = $this->convertToMetaAndData($record->with('resident')
+		$pagination = $this->convertToMetaAndData($record->with('resident')->orderByDesc('created_at')
 			->paginate($data['perPage'], '*', 'page', $data['page']));
 
 		$record_restructure = array_map(function ($data) {

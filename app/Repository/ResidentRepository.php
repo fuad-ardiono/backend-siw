@@ -71,6 +71,6 @@ class ResidentRepository {
 
 	public function residentFemaleCount()
 	{
-		return $this->resident_model->newQuery()->where('gender', 'F')->count();
+		return $this->resident_model->newQuery()->where('gender', 'P')->count();
 	}
 }

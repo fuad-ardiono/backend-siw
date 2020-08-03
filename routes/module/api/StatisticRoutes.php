@@ -1,6 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
 
-Route::group(['prefix' => 'statistic', 'middleware' => 'jwt_guard'], function () {
+Route::group(['prefix' => 'statistic'], function () {
 	Route::get('/', 'Api\StatisticController@index');
 });
