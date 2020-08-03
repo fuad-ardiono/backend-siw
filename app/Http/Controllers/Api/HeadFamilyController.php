@@ -74,4 +74,15 @@ class HeadFamilyController extends Controller
 			return $this->responseError($err);
 		}
 	}
+
+	public function show($id)
+	{
+		try {
+			$dispatch_service = $this->resident_service->show($id);
+
+			return $this->response('Success show data resident', $dispatch_service);
+		} catch (\Exception $err) {
+			return $this->responseError($err);
+		}
+	}
 }

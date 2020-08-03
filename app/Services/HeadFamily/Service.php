@@ -78,6 +78,6 @@ class Service implements Contract {
 
 	public function show($id)
 	{
-		return $this->resident_repo->findById($id);
+		return $this->head_family_repo->findById($id);
 	}
 }

@@ -46,4 +46,17 @@ class HeadFamilyRepository {
 
 		return $pagination;
 	}
+
+	public function findById($id) {
+		$record = $this->head_family_model->newQuery()->where('id', $id)
+			->with('resident')->firstOrFail();
+
+		$resident = $record['resident'];
+		unset($record['resident']);
+
+		return [
+			'head_family' => $record,
+			'resident' => $resident
+		];
+	}
 }
