@@ -20,6 +20,13 @@ class ResidentRepository {
 			->with(['role', 'head_family'])->first();
 	}
 
+	public function syncResident($ids, $head_family_id)
+	{
+		return $this->resident_model->newQuery()->where('head_family_id', $head_family_id)
+			->whereNotIn('id', $ids)
+			->delete();
+	}
+
 	public function create($data)
 	{
 		return array_map(function($resident) {

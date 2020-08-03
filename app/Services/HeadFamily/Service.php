@@ -48,7 +48,13 @@ class Service implements Contract {
 		DB::beginTransaction();
 		try {
 			$head_family = $this->head_family_repo->update($data['head_family']);
+
+			$ids = array_map(function ($resident) {
+				return $resident['id'];
+			}, $data['resident']);
+			$this->resident_repo->syncResident($ids, $data['head_family']['id']);
 			$resident = $this->resident_repo->update($data['resident']);
+			
 			DB::commit();
 
 			return [
