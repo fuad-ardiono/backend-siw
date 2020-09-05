@@ -43,7 +43,7 @@ class CriticsSuggestionController extends Controller
 		try {
 			$query['perPage'] = $request->query('perPage', 5);
 			$query['page'] = $request->query('page', 1);
-			$query['isRead'] = $request->query('isRead', false);
+			$query['isRead'] = $request->query('isRead', null);
 
 			$dispatch_service = $this->critics_suggestion_service->index($query);
 

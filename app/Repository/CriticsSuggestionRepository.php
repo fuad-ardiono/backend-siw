@@ -39,7 +39,7 @@ class CriticsSuggestionRepository {
 
 		if($data['isRead'] == true) {
 			$record->where('is_read', true);
-		} else {
+		} else if($data['isRead'] == false) {
 			$record->where('is_read', false);
 		}
 

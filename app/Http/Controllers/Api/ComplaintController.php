@@ -43,7 +43,7 @@ class ComplaintController extends Controller
 		try {
 			$query['perPage'] = $request->query('perPage', 5);
 			$query['page'] = $request->query('page', 1);
-			$query['isResolved'] = $request->query('isResolved', false);
+			$query['isResolved'] = $request->query('isResolved', null);
 
 			$dispatch_service = $this->complaint_service->index($query);
 
