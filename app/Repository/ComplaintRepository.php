@@ -23,9 +23,10 @@ class ComplaintRepository {
 	{
 		$record = $this->complaint_model->newQuery();
 
-		if($data['isResolved'] == true) {
+
+		if($data['isResolved'] === true) {
 			$record->where('is_resolved', true);
-		} else if($data['isResolved'] == false) {
+		} else if($data['isResolved'] === false) {
 			$record->where('is_resolved', false);
 		}
 
