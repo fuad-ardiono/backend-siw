@@ -23,23 +23,58 @@ class ComplaintRepository {
 	{
 		$record = $this->complaint_model->newQuery();
 
-
-		if($data['isResolved'] === true) {
-			$record->where('is_resolved', true);
-		} else if($data['isResolved'] === false) {
-			$record->where('is_resolved', false);
+		switch($data['status']){
+			case 'read':
+				$record->where('status', '=', 'read');
+				break;
+			case 'pending':
+				$record->where('status', '=', 'pending');
+				break;
+			case 'acc':
+				$record->where('status', '=', 'acc');
+				break;
+			default:
+				break;
 		}
 
 		return $this->convertToMetaAndData($record->with('resident')->orderByDesc('created_at')
 			->paginate($data['perPage'], '*', 'page', $data['page']));
 	}
 
-	public function markIsResolved($id_complaint)
+	public function markIsRead($id_complaint)
 	{
 		$record = $this->complaint_model->newQuery()->find($id_complaint);
 
 		if($record) {
-			$record->is_resolved = true;
+			$record->status = 'read';
+			$record->save();
+
+			return $record;
+		}
+
+		throw new \Exception('No record found, please check your id');
+	}
+
+	public function markIsPending($id_complaint)
+	{
+		$record = $this->complaint_model->newQuery()->find($id_complaint);
+
+		if($record) {
+			$record->status = 'pending';
+			$record->save();
+
+			return $record;
+		}
+
+		throw new \Exception('No record found, please check your id');
+	}
+
+	public function markIsAcc($id_complaint)
+	{
+		$record = $this->complaint_model->newQuery()->find($id_complaint);
+
+		if($record) {
+			$record->status = 'acc';
 			$record->save();
 
 			return $record;

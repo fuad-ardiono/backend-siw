@@ -43,7 +43,7 @@ class ComplaintController extends Controller
 		try {
 			$query['perPage'] = $request->query('perPage', 5);
 			$query['page'] = $request->query('page', 1);
-			$query['isResolved'] = $request->query('isResolved', null);
+			$query['status'] = $request->query('status', null);
 
 			$dispatch_service = $this->complaint_service->index($query);
 
@@ -53,12 +53,34 @@ class ComplaintController extends Controller
 		}
 	}
 
-	public function markIsResolved($id)
+	public function markIsRead($id)
 	{
 		try {
-			$dispatch_service = $this->complaint_service->markIsResolved($id);
+			$dispatch_service = $this->complaint_service->marklIsRead($id);
 
-			return $this->response('Success mark is resolved', $dispatch_service);
+			return $this->response('Success mark is read', $dispatch_service);
+		} catch (\Exception $err) {
+			return $this->responseError($err);
+		}
+	}
+
+	public function markIsPending($id)
+	{
+		try {
+			$dispatch_service = $this->complaint_service->marklIsPending($id);
+
+			return $this->response('Success mark is pending', $dispatch_service);
+		} catch (\Exception $err) {
+			return $this->responseError($err);
+		}
+	}
+
+	public function markIsAcc($id)
+	{
+		try {
+			$dispatch_service = $this->complaint_service->marklIsAcc($id);
+
+			return $this->response('Success mark is acc', $dispatch_service);
 		} catch (\Exception $err) {
 			return $this->responseError($err);
 		}
