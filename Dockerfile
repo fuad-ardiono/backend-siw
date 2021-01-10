@@ -5,6 +5,7 @@ ARG uid
 
 # Install system dependencies
 RUN apk update && apk add \
+	autoconf \
     git \
     curl \
     libpng-dev \
@@ -21,6 +22,10 @@ RUN apk update && apk add \
 # Install PHP extensions
 RUN docker-php-ext-install bcmath bz2 calendar iconv intl mbstring json mysqli pdo_mysql pdo_pgsql pgsql soap \
  xsl zip
+
+RUN apk add gcc libc-dev build-base
+
+RUN pecl install redis && docker-php-ext-enable redis
 
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer

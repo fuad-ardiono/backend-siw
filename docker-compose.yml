@@ -40,6 +40,18 @@ services:
       - ./docker-compose/nginx:/etc/nginx/conf.d
     networks:
       - backendsiw
+  redis:
+    image: redis:4.0.14
+    container_name: backendsiw-redis
+    # have password root
+    command: redis-server --requirepass root
+    restart: unless-stopped
+    ports:
+      - "6380:6379"
+    volumes:
+      - ./docker-compose/redis/redis.conf:/usr/local/etc/redis/redis.conf
+    networks:
+      - backendsiw
 networks:
   backendsiw:
     driver: bridge
