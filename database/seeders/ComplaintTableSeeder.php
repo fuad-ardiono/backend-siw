@@ -1,7 +1,9 @@
 <?php
+namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Resident;
+use App\Complaint;
 
 class ComplaintTableSeeder extends Seeder
 {
@@ -12,7 +14,7 @@ class ComplaintTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Complaint::class, 50)->create()->each(function ($complaint) {
+        factory(Complaint::class, 50)->create()->each(function ($complaint) {
         	$resident = Resident::query()->inRandomOrder()->first();
 
         	$complaint->resident_id = $resident->id;
