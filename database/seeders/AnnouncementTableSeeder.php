@@ -1,7 +1,9 @@
 <?php
+namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Admin;
+use App\Announcement;
 
 class AnnouncementTableSeeder extends Seeder
 {
@@ -12,7 +14,7 @@ class AnnouncementTableSeeder extends Seeder
      */
     public function run()
     {
-    	factory(App\Announcement::class, 50)->create()->each(function($announcement) {
+    	factory(Announcement::class, 50)->create()->each(function($announcement) {
 			$admin = Admin::query()->inRandomOrder()->first();
 
 			$announcement->admin_id = $admin->id;

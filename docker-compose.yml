@@ -16,16 +16,16 @@ services:
     networks:
       - backendsiw
   mysql:
-    image: mysql:5.7
+    image: mysql:8.0
     container_name: backendsiw-db
     restart: unless-stopped
     ports:
       - "3308:3306"
     environment:
       MYSQL_DATABASE: backendsiw
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_PASSWORD: root
-      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: BackendSiwRoot
+      MYSQL_PASSWORD: BackendSiw
+      MYSQL_USER: fuad
       SERVICE_TAGS: dev
     networks:
       - backendsiw
